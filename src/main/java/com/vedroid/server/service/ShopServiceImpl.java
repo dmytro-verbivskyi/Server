@@ -3,23 +3,23 @@ package com.vedroid.server.service;
 import com.vedroid.server.exception.ShopNotFound;
 import com.vedroid.server.model.Shop;
 import com.vedroid.server.repository.ShopRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class ShopServiceImpl implements ShopService {
 
-    @Resource
+    @Autowired
     private ShopRepository shopRepository;
 
     @Override
     @Transactional
     public Shop create(Shop shop) {
-        Shop createdShop = shop;
-        return shopRepository.save(createdShop);
+        Shop createdShop = shopRepository.save(shop);
+        return createdShop;
     }
 
     @Override

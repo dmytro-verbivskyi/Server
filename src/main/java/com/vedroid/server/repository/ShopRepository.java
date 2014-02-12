@@ -1,8 +1,7 @@
 package com.vedroid.server.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.vedroid.server.model.Shop;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ShopRepository extends JpaRepository<Shop, Integer> {
 
