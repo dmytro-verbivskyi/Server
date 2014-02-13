@@ -14,7 +14,30 @@
         <mysql.connector.version>5.1.21</mysql.connector.version>
         <spring.version>3.2.2.RELEASE</spring.version>
         <jetty.version>6.1.14</jetty.version>
+        <hibernate.generate.ddl>true</hibernate.generate.ddl>
+        <hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>dv-serena-jetty</id>
+            <properties>
+                <db.driver>com.mysql.jdbc.Driver</db.driver>
+                <db.url>jdbc:mysql://localhost:3306/protein_tracker</db.url>
+                <db.user>root</db.user>
+                <db.pass>password</db.pass>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <db.driver>org.hsqldb.jdbcDriver</db.driver>
+                <db.url>jdbc:hsqldb:mem:mymemdb</db.url>
+                <db.user>user</db.user>
+                <db.pass>pass</db.pass>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -73,6 +96,12 @@
 
     <build>
         <finalName>server</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
