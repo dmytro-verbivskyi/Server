@@ -29,6 +29,15 @@
             </properties>
         </profile>
         <profile>
+            <id>dv-home-jetty</id>
+            <properties>
+                <db.driver>com.mysql.jdbc.Driver</db.driver>
+                <db.url>jdbc:mysql://localhost:3306/server_db</db.url>
+                <db.user>root</db.user>
+                <db.pass>password</db.pass>
+            </properties>
+        </profile>
+        <profile>
             <id>test</id>
             <properties>
                 <db.driver>org.hsqldb.jdbcDriver</db.driver>
