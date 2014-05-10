@@ -18,25 +18,24 @@ public class ShopServiceImpl implements ShopService {
     @Override
     @Transactional
     public Shop create(Shop shop) {
-        Shop createdShop = shopRepository.save(shop);
-        return createdShop;
+        return shopRepository.create(shop);
     }
 
     @Override
     @Transactional
     public Shop findById(Long id) {
-        return shopRepository.findOne(id);
+        return shopRepository.findById(id);
     }
 
     @Override
     @Transactional(rollbackFor = ShopNotFound.class)
     public Shop delete(Long id) throws ShopNotFound {
-        Shop deletedShop = shopRepository.findOne(id);
+        Shop deletedShop = shopRepository.findById(id);
 
-        if (deletedShop == null)
+        if (deletedShop == null) {
             throw new ShopNotFound();
-
-        shopRepository.delete(deletedShop);
+        }
+        shopRepository.delete(id);
         return deletedShop;
     }
 
@@ -49,11 +48,11 @@ public class ShopServiceImpl implements ShopService {
     @Override
     @Transactional(rollbackFor = ShopNotFound.class)
     public Shop update(Shop shop) throws ShopNotFound {
-        Shop updatedShop = shopRepository.findOne(shop.getId());
+        Shop updatedShop = shopRepository.findById(shop.getId());
 
-        if (updatedShop == null)
+        if (updatedShop == null) {
             throw new ShopNotFound();
-
+        }
         updatedShop.setName(shop.getName());
         updatedShop.setEmplNumber(shop.getEmplNumber());
         return updatedShop;

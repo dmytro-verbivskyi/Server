@@ -7,7 +7,16 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static com.vedroid.server.util.DataUtil.getShop;
+
 public class ShopServiceTest extends InMemoryDBTest {
+
+    @Test
+    public void createShop() {
+        Shop s1 = shopService.create(getShop());
+        Assert.assertNotNull(s1);
+        Assert.assertNotNull(s1.getId());
+    }
 
     @Test
     public void testFindAll() throws Exception {
@@ -15,4 +24,5 @@ public class ShopServiceTest extends InMemoryDBTest {
         Assert.assertNotNull(shops);
         Assert.assertEquals("There are no shops at all.", 0, shops.size());
     }
+
 }

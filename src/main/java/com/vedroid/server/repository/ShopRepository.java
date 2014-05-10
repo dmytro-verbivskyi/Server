@@ -1,8 +1,19 @@
 package com.vedroid.server.repository;
 
+import com.vedroid.server.exception.ShopNotFound;
 import com.vedroid.server.model.Shop;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ShopRepository extends JpaRepository<Shop, Long> {
+import java.util.List;
 
+public interface ShopRepository {
+
+    Shop create(Shop shop);
+
+    void delete(Long id) throws ShopNotFound;
+
+    List<Shop> findAll();
+
+    Shop update(Shop shop) throws ShopNotFound;
+
+    Shop findById(Long id);
 }

@@ -26,7 +26,7 @@ import java.util.Properties;
         "com.vedroid.server.repository",
         "com.vedroid.server.service",
         "com.vedroid.server.validation"})
-@EnableJpaRepositories("com.vedroid.server.repository")
+@EnableJpaRepositories("com.vedroid.server.dao")
 public class BeansConfig {
 
     private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
