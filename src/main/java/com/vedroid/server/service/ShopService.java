@@ -9,12 +9,12 @@ public interface ShopService {
 
     Shop create(Shop shop);
 
-    Shop delete(int id) throws ShopNotFound;
+    Shop delete(Long id) throws ShopNotFound;
 
     List<Shop> findAll();
 
     Shop update(Shop shop) throws ShopNotFound;
 
-    Shop findById(int id);
+    Shop findById(Long id);
 
 }

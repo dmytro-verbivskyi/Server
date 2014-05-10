@@ -24,13 +24,13 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     @Transactional
-    public Shop findById(int id) {
+    public Shop findById(Long id) {
         return shopRepository.findOne(id);
     }
 
     @Override
     @Transactional(rollbackFor = ShopNotFound.class)
-    public Shop delete(int id) throws ShopNotFound {
+    public Shop delete(Long id) throws ShopNotFound {
         Shop deletedShop = shopRepository.findOne(id);
 
         if (deletedShop == null)

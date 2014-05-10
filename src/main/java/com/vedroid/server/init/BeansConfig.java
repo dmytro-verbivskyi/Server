@@ -20,19 +20,31 @@ import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:application.properties")
-@ComponentScan("com.vedroid.server.service")
+@ComponentScan(basePackages = {
+        "com.vedroid.server.controller",
+        "com.vedroid.server.exception",
+        "com.vedroid.server.repository",
+        "com.vedroid.server.service",
+        "com.vedroid.server.validation"})
 @EnableJpaRepositories("com.vedroid.server.repository")
 public class BeansConfig {
 
     private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
+
     private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";
+
     private static final String PROPERTY_NAME_DATABASE_URL = "db.url";
+
     private static final String PROPERTY_NAME_DATABASE_USERNAME = "db.username";
 
     private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
+
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
+
     private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
+
     private static final String PROPERTY_NAME_HIBERNATE_GENERATE_DDL = "hibernate.generateDdl";
+
     private static final String PROPERTY_NAME_ENTITY_MANAGER_PACKAGES_TO_SCAN = "entitymanager.packages.to.scan";
 
     @Resource
@@ -41,12 +53,10 @@ public class BeansConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-
         dataSource.setDriverClassName(env.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));
         dataSource.setUrl(env.getRequiredProperty(PROPERTY_NAME_DATABASE_URL));
         dataSource.setUsername(env.getRequiredProperty(PROPERTY_NAME_DATABASE_USERNAME));
         dataSource.setPassword(env.getRequiredProperty(PROPERTY_NAME_DATABASE_PASSWORD));
-
         return dataSource;
     }
 
@@ -56,15 +66,13 @@ public class BeansConfig {
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistence.class);
         entityManagerFactoryBean.setPackagesToScan(env.getRequiredProperty(PROPERTY_NAME_ENTITY_MANAGER_PACKAGES_TO_SCAN));
-
         entityManagerFactoryBean.setJpaProperties(hibProperties());
-
         return entityManagerFactoryBean;
     }
 
     private Properties hibProperties() {
         Properties properties = new Properties();
-        properties.put(PROPERTY_NAME_HIBERNATE_DIALECT,	env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
+        properties.put(PROPERTY_NAME_HIBERNATE_DIALECT, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
         properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
         properties.put(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO));
         properties.put(PROPERTY_NAME_HIBERNATE_GENERATE_DDL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_GENERATE_DDL));

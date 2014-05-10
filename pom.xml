@@ -10,21 +10,30 @@
     <packaging>war</packaging>
 
     <properties>
+        <!-- Libraries -->
         <hibernate.version>4.2.0.Final</hibernate.version>
         <mysql.connector.version>5.1.21</mysql.connector.version>
         <spring.version>3.2.2.RELEASE</spring.version>
         <jetty.version>6.1.14</jetty.version>
         <junit.version>4.11</junit.version>
-        <hibernate.generate.ddl>true</hibernate.generate.ddl>
-        <hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
         <mockito.version>1.9.5</mockito.version>
         <hsqldb.version>2.3.1</hsqldb.version>
+
+        <!-- Development -->
+        <hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
+        <db.driver>org.hsqldb.jdbcDriver</db.driver>
+        <db.url>jdbc:hsqldb:mem:mymemdb</db.url>
+        <db.user>user</db.user>
+        <db.pass>pass</db.pass>
+        <hibernate.generate.ddl>true</hibernate.generate.ddl>
+        <hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
     </properties>
 
     <profiles>
         <profile>
-            <id>dv-serena-jetty</id>
+            <id>dv-serena-mySQL</id>
             <properties>
+                <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
                 <db.driver>com.mysql.jdbc.Driver</db.driver>
                 <db.url>jdbc:mysql://localhost:3306/protein_tracker</db.url>
                 <db.user>root</db.user>
@@ -32,21 +41,13 @@
             </properties>
         </profile>
         <profile>
-            <id>dv-home-jetty</id>
+            <id>dv-home-mySQL</id>
             <properties>
+                <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
                 <db.driver>com.mysql.jdbc.Driver</db.driver>
                 <db.url>jdbc:mysql://localhost:3306/server_db</db.url>
                 <db.user>root</db.user>
                 <db.pass>password</db.pass>
-            </properties>
-        </profile>
-        <profile>
-            <id>test</id>
-            <properties>
-                <db.driver>org.hsqldb.jdbcDriver</db.driver>
-                <db.url>jdbc:hsqldb:mem:mymemdb</db.url>
-                <db.user>user</db.user>
-                <db.pass>pass</db.pass>
             </properties>
         </profile>
     </profiles>

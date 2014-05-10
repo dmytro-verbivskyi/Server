@@ -12,6 +12,7 @@ public class ShopServiceTest extends InMemoryDBTest {
     @Test
     public void testFindAll() throws Exception {
         List<Shop> shops = shopService.findAll();
-        Assert.assertTrue(true);
+        Assert.assertNotNull(shops);
+        Assert.assertEquals("There are no shops at all.", 0, shops.size());
     }
 }

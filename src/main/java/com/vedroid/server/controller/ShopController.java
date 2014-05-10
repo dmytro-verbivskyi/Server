@@ -67,7 +67,7 @@ public class ShopController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public ModelAndView editShopPage(@PathVariable Integer id) {
+    public ModelAndView editShopPage(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView("shop-edit");
         Shop shop = shopService.findById(id);
         mav.addObject("shop", shop);
@@ -77,7 +77,7 @@ public class ShopController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public ModelAndView editShop(@ModelAttribute @Valid Shop shop,
                                  BindingResult result,
-                                 @PathVariable Integer id,
+                                 @PathVariable Long id,
                                  final RedirectAttributes redirectAttributes) throws ShopNotFound {
 
         if (result.hasErrors())
@@ -93,7 +93,7 @@ public class ShopController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public ModelAndView deleteShop(@PathVariable Integer id,
+    public ModelAndView deleteShop(@PathVariable Long id,
                                    final RedirectAttributes redirectAttributes) throws ShopNotFound {
 
         ModelAndView mav = new ModelAndView("redirect:/index.html");
