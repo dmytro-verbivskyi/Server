@@ -1,31 +1,23 @@
 package com.vedroid.server.model;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "shops")
-public class Shop {
+@Table(name = "SHOPS")
+@SequenceGenerator(initialValue = 1, name = "idgen", sequenceName = "entityshopseq")
+public class Shop extends Identifiable {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
+    @Basic
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "employees_number")
+    @Basic
+    @Column(name = "EMPLOYEES_NUMBER", nullable = false)
     private Integer emplNumber;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
