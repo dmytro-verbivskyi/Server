@@ -17,6 +17,8 @@
         <junit.version>4.11</junit.version>
         <hibernate.generate.ddl>true</hibernate.generate.ddl>
         <hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
+        <mockito.version>1.9.5</mockito.version>
+        <hsqldb.version>2.3.1</hsqldb.version>
     </properties>
 
     <profiles>
@@ -102,11 +104,34 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

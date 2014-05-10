@@ -1,13 +1,17 @@
 package com.vedroid.server.service;
 
+import com.vedroid.server.model.Shop;
+import com.vedroid.server.util.InMemoryDBTest;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ShopServiceTest {
+import java.util.List;
+
+public class ShopServiceTest extends InMemoryDBTest {
 
     @Test
     public void testFindAll() throws Exception {
-        int a = 9;
+        List<Shop> shops = shopService.findAll();
         Assert.assertTrue(true);
     }
 }
