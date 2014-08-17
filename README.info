@@ -1,0 +1,9 @@
+======_HOW_TO_PLAY_======
+1) execute maven goal ../Server/Server> mvn jetty:run -Pdv-HSQL
+2) open  http://localhost:8181/server/
+3) create several shops, view full list of shops
+4) press Ctrl+C to stop jetty server, then input Y to confirm stopping
+
+=========_TODO_==========
+1)
+2)

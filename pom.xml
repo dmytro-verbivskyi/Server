@@ -50,6 +50,16 @@
                 <db.pass>password</db.pass>
             </properties>
         </profile>
+        <profile>
+            <id>dv-HSQL</id>
+            <properties>
+                <hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
+                <db.driver>org.hsqldb.jdbcDriver</db.driver>
+                <db.url>jdbc:hsqldb:mem:mymemdb</db.url>
+                <db.user>user</db.user>
+                <db.pass>pass</db.pass>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
@@ -130,7 +140,6 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
