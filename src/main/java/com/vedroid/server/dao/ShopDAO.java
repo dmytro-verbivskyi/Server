@@ -7,11 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface ShopDAO extends JpaRepository<Shop, Long> {
-    String dbName = "Shop";
+    String dbName = "Shop"; // must be equals to com.vedroid.server.model.Shop
 
     @Modifying
     @Transactional
     @Query("DELETE FROM " + dbName)
     void deleteAllFromTable();
-
 }

@@ -2,8 +2,8 @@ package com.vedroid.server.util;
 
 import com.vedroid.server.dao.ShopDAO;
 import com.vedroid.server.init.BeansConfig;
-import com.vedroid.server.repository.ShopRepository;
-import com.vedroid.server.service.ShopService;
+import com.vedroid.server.repository.IShopRepository;
+import com.vedroid.server.service.IShopService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -18,10 +18,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public abstract class InMemoryDBTest {
 
     @Autowired
-    protected ShopService shopService;
+    protected IShopService shopService;
 
     @Autowired
-    protected ShopRepository shopRepository;
+    protected IShopRepository shopRepository;
 
     @Autowired
     protected ShopDAO shopDAO;
@@ -45,5 +45,4 @@ public abstract class InMemoryDBTest {
     public void tearDown() throws Exception {
         shopDAO.deleteAllFromTable();
     }
-
 }

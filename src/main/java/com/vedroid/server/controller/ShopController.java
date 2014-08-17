@@ -2,7 +2,7 @@ package com.vedroid.server.controller;
 
 import com.vedroid.server.exception.ShopNotFound;
 import com.vedroid.server.model.Shop;
-import com.vedroid.server.service.ShopService;
+import com.vedroid.server.service.IShopService;
 import com.vedroid.server.validation.ShopValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ import java.util.List;
 public class ShopController {
 
     @Autowired
-    private ShopService shopService;
+    private IShopService shopService;
 
     @Autowired
     private ShopValidator shopValidator;
@@ -45,9 +45,9 @@ public class ShopController {
                                       BindingResult result,
                                       final RedirectAttributes redirectAttributes) {
 
-        if (result.hasErrors())
+        if (result.hasErrors()) {
             return new ModelAndView("shop-new");
-
+        }
         ModelAndView mav = new ModelAndView();
         String message = "New shop " + shop.getName() + " was successfully created.";
 
@@ -80,9 +80,9 @@ public class ShopController {
                                  @PathVariable Long id,
                                  final RedirectAttributes redirectAttributes) throws ShopNotFound {
 
-        if (result.hasErrors())
+        if (result.hasErrors()) {
             return new ModelAndView("shop-edit");
-
+        }
         ModelAndView mav = new ModelAndView("redirect:/index.html");
         String message = "Shop was successfully updated.";
 
